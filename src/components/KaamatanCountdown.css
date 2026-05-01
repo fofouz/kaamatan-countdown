@@ -1,0 +1,532 @@
+/* ─── Fonts ──────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap');
+
+/* ─── Variables ──────────────────────────────────────────────── */
+:root {
+  --gold:        #e8c030;
+  --gold-light:  #f5d870;
+  --gold-dim:    rgba(232, 192, 48, 0.35);
+  --dark:        #1a0a00;
+  --text-white:  #ffffff;
+  --text-muted:  rgba(255, 255, 255, 0.65);
+}
+
+/* ─── Scene wrapper ──────────────────────────────────────────── */
+.kmt-scene {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'Lato', sans-serif;
+}
+
+/* ─── Sky ────────────────────────────────────────────────────── */
+.kmt-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #1a0a00  0%,
+    #3d1500  15%,
+    #7a2e00  30%,
+    #c45a00  48%,
+    #e8890a  58%,
+    #f5b942  68%,
+    #fce08a  78%,
+    #fff5c8  88%,
+    #fffbe8  100%
+  );
+  pointer-events: none;
+}
+
+/* ─── Sun glow ───────────────────────────────────────────────── */
+.kmt-sun-glow {
+  position: absolute;
+  bottom: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 240, 100, 0.55) 0%,
+    rgba(255, 180, 30, 0.25) 45%,
+    transparent 70%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+  animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+  0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+  50%       { opacity: 1;   transform: translateX(-50%) scale(1.08); }
+}
+
+/* ─── Clouds ─────────────────────────────────────────────────── */
+.cloud {
+  position: absolute;
+  background: rgba(255, 248, 210, 0.18);
+  border-radius: 50px;
+  pointer-events: none;
+  animation: drift 20s linear infinite;
+}
+
+.cloud-1 { width: 130px; height: 28px; top: 11%; left: 4%;  animation-duration: 25s; }
+.cloud-2 { width: 80px;  height: 20px; top: 7%;  left: 17%; animation-duration: 32s; animation-delay: -8s; }
+.cloud-3 { width: 110px; height: 24px; top: 14%; right: 6%; animation-direction: reverse; animation-duration: 28s; }
+.cloud-4 { width: 60px;  height: 16px; top: 9%;  right: 20%;animation-direction: reverse; animation-duration: 22s; }
+
+@keyframes drift {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(15px); }
+  100% { transform: translateX(0); }
+}
+
+/* ─── Mountains ──────────────────────────────────────────────── */
+.mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  pointer-events: none;
+}
+
+/* ─── Rice Field ─────────────────────────────────────────────── */
+.rice-field {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg);  transform-origin: bottom center; }
+  50%       { transform: rotate(5deg); transform-origin: bottom center; }
+}
+
+/* ─── Content ────────────────────────────────────────────────── */
+.kmt-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2.5rem 1.5rem 2rem;
+  width: 100%;
+  max-width: 780px;
+  margin-top: -60px;
+  animation: fadeUp 1s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Tag ────────────────────────────────────────────────────── */
+.kmt-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.5rem;
+  animation: fadeUp 1s ease 0.1s both;
+}
+
+/* ─── Title ──────────────────────────────────────────────────── */
+.kmt-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.3rem;
+  line-height: 1;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.kmt-title-small {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(14px, 3vw, 20px);
+  font-style: italic;
+  font-weight: 700;
+  color: rgba(232, 192, 48, 0.85);
+  letter-spacing: 4px;
+  margin-bottom: 0.15rem;
+}
+
+.kmt-title-big {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(42px, 11vw, 78px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(255, 200, 60, 0.25);
+}
+
+/* ─── Date ───────────────────────────────────────────────────── */
+.kmt-date {
+  font-size: clamp(11px, 2vw, 14px);
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.8rem;
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+/* ─── Clock ──────────────────────────────────────────────────── */
+.kmt-clock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+/* ─── Flip Unit ──────────────────────────────────────────────── */
+.flip-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.flip-card {
+  position: relative;
+  background: rgba(8, 4, 0, 0.85);
+  border: 1px solid var(--gold-dim);
+  border-radius: 10px;
+  width: clamp(68px, 15vw, 108px);
+  height: clamp(76px, 17vw, 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Top/bottom halves for the flip effect */
+.flip-half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.flip-top {
+  top: 0;
+  align-items: flex-end;
+  padding-bottom: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+}
+
+.flip-bottom {
+  bottom: 0;
+  align-items: flex-start;
+  padding-top: 2px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Clip top half to show top portion of number */
+.flip-top .flip-num  { transform: translateY(50%); }
+.flip-bottom .flip-num { transform: translateY(-50%); }
+
+/* Divider line */
+.flip-divider {
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: var(--gold-dim);
+  z-index: 2;
+}
+
+.flip-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 7vw, 54px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-shadow: 0 0 16px rgba(255, 200, 80, 0.35);
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.18s, transform 0.18s;
+  user-select: none;
+}
+
+.flip-card.flipping .flip-num {
+  opacity: 0;
+  transform: translateY(-6px) translateY(-50%);
+}
+
+.flip-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(232, 192, 48, 0.72);
+}
+
+/* ─── Colon ──────────────────────────────────────────────────── */
+.kmt-colon {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(24px, 6vw, 52px);
+  color: rgba(232, 192, 48, 0.45);
+  margin-top: clamp(12px, 3vw, 22px);
+  animation: colonBlink 1s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes colonBlink {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.12; }
+}
+
+/* ─── Feedback Button ────────────────────────────────────────── */
+.kmt-btn {
+  display: inline-block;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(13px, 2.5vw, 16px);
+  font-style: italic;
+  padding: 11px 36px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.15s;
+  letter-spacing: 0.5px;
+  animation: fadeUp 1s ease 0.5s both;
+}
+
+.kmt-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.kmt-btn:active {
+  transform: translateY(0);
+}
+
+/* ─── Celebrate ──────────────────────────────────────────────── */
+.kmt-celebrate {
+  margin-bottom: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--gold-dim);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.kmt-celebrate-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.kmt-celebrate h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.kmt-celebrate p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(232,192,48,0.1); }
+  50%       { box-shadow: 0 0 40px rgba(232,192,48,0.25); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ─── Loading ────────────────────────────────────────────────── */
+.kmt-loading {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* ─── Modal ──────────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: #1a0d04;
+  border: 1px solid var(--gold-dim);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+.modal-close:hover { color: #ffffff; }
+
+.modal-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.modal-question {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: rgba(232, 192, 48, 0.08);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  text-align: left;
+}
+
+.modal-input,
+.modal-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(232, 192, 48, 0.25);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s;
+  margin-bottom: 0.75rem;
+}
+
+.modal-input::placeholder,
+.modal-textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+.modal-input:focus,
+.modal-textarea:focus { border-color: var(--gold-dim); }
+
+.modal-submit {
+  width: 100%;
+  background: var(--gold);
+  color: #1a0a00;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.modal-submit:hover  { background: var(--gold-light); transform: translateY(-1px); }
+.modal-submit:active { transform: translateY(0); }
+
+.modal-thanks {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.modal-thanks-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+.modal-thanks p {
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.modal-thanks-sub {
+  font-size: 13px !important;
+  color: var(--gold) !important;
+  margin-top: 0.4rem;
+  letter-spacing: 1px !important;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .kmt-content { margin-top: -30px; padding: 1.5rem 1rem 1.5rem; }
+  .kmt-clock   { gap: 4px; }
+  .kmt-colon   { margin-top: 14px; font-size: 20px; }
+  .flip-card   { border-radius: 7px; }
+  .cloud-3,
+  .cloud-4     { display: none; }
+}
