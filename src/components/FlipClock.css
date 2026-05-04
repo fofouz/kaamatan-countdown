@@ -1,0 +1,174 @@
+.clock-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── Flip Unit ─────────────────────────────────── */
+.flip-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.flip-box {
+  position: relative;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  width: clamp(80px, 17vw, 118px);
+  height: clamp(90px, 19vw, 132px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Top half highlight */
+.flip-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+/* Bottom half — slightly darker */
+.flip-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+/* Hide the duplicate numbers inside halves */
+.flip-top .flip-num,
+.flip-bottom .flip-num {
+  display: none;
+}
+
+/* Center divider line */
+.flip-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 2;
+}
+
+/* Number text — bold white like reference image */
+.flip-num {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 9vw, 68px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  position: relative;
+  z-index: 3;
+  letter-spacing: -2px;
+  display: block;
+  user-select: none;
+  transition: opacity 0.18s, transform 0.18s;
+}
+
+/* Flip animation */
+.flip-box.flipping .flip-num {
+  opacity: 0;
+  transform: translateY(-6px) translateY(50%);
+}
+
+.flip-box.flipping .flip-bottom .flip-num {
+  opacity: 0;
+  transform: translateY(-6px) translateY(-50%);
+}
+
+/* Label below each unit */
+.flip-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(240, 192, 60, 0.72);
+}
+
+/* ── Colon separator ───────────────────────────── */
+.colon {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 7vw, 54px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: clamp(14px, 3.5vw, 24px);
+  animation: colonBlink 1s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes colonBlink {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.1; }
+}
+
+/* ── Celebrate states ──────────────────────────── */
+.clock-celebrate {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid rgba(240, 192, 60, 0.3);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.celebrate-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.clock-celebrate h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.clock-celebrate p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.5px;
+}
+
+.clock-loading {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(240,192,60,0.1); }
+  50%       { box-shadow: 0 0 40px rgba(240,192,60,0.25); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 480px) {
+  .clock-wrap { gap: 3px; }
+  .colon { font-size: 22px; margin-top: 14px; }
+  .flip-box { border-radius: 6px; }
+}

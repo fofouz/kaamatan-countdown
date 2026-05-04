@@ -1,0 +1,302 @@
+/* ── Wish Section ──────────────────────────────────── */
+.wish-section {
+  position: relative;
+  z-index: 10;
+  padding: 80px 48px;
+  background: rgba(8, 3, 0, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(200, 140, 30, 0.15);
+  max-width: 100%;
+}
+
+/* ── Section Header ────────────────────────────────── */
+.wish-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.section-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 1px;
+}
+
+.wish-header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.wish-wall-count {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(240, 192, 60, 0.7);
+  background: rgba(240, 192, 60, 0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(240, 192, 60, 0.2);
+}
+
+/* ── Make a Wish button (header) ───────────────────── */
+.wish-open-btn {
+  background: #e8b830;
+  color: #0d0500;
+  border: none;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.wish-open-btn:hover  { background: #f5c842; transform: translateY(-2px); }
+.wish-open-btn:active { transform: translateY(0); }
+
+/* ── Wish Grid — full width ────────────────────────── */
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+/* ── Wish Card ─────────────────────────────────────── */
+.wish-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(200, 140, 30, 0.18);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.wish-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 140, 30, 0.38);
+  transform: translateY(-2px);
+}
+
+.wish-card--new {
+  animation: slideInWish 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-color: rgba(240, 192, 60, 0.55);
+  background: rgba(240, 192, 60, 0.06);
+}
+
+@keyframes slideInWish {
+  from { opacity: 0; transform: translateY(-14px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.wish-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.wish-card-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c07020, #e8b830);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0d0500;
+  flex-shrink: 0;
+}
+
+.wish-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(240, 192, 60, 0.9);
+}
+
+.wish-card-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+/* ── Modal Backdrop ────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Wish Modal ────────────────────────────────────── */
+.wish-modal {
+  background: #150a00;
+  border: 1px solid rgba(200, 140, 30, 0.3);
+  border-radius: 18px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  animation: slideUp 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.07);
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255,255,255,0.14);
+  color: #ffffff;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* ── Shared form styles ────────────────────────────── */
+.wish-question {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0c040;
+  padding: 12px 16px;
+  background: rgba(240, 192, 60, 0.07);
+  border-left: 3px solid #f0c040;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(200, 140, 30, 0.28);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 12px;
+  resize: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder { color: rgba(255,255,255,0.28); }
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: rgba(240, 192, 60, 0.55);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.form-textarea.error { border-color: rgba(220, 80, 60, 0.6); }
+
+.form-error {
+  font-size: 12px;
+  color: rgba(220, 100, 80, 0.9);
+  margin-bottom: 10px;
+  margin-top: -6px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #e8b830;
+  color: #0d0500;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 4px;
+}
+
+.submit-btn:hover  { background: #f5c842; transform: translateY(-2px); }
+.submit-btn:active { transform: translateY(0); }
+
+/* ── Modal Thanks ──────────────────────────────────── */
+.modal-thanks {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.modal-thanks-icon { font-size: 3rem; margin-bottom: 1rem; animation: bounce 1.5s ease-in-out infinite; }
+.modal-thanks-msg  { font-size: 16px; color: #ffffff; margin-bottom: 8px; line-height: 1.5; }
+.modal-thanks-gold { font-size: 13px; color: #f0c040; letter-spacing: 1px; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .wish-section { padding: 60px 20px; }
+  .wish-grid { grid-template-columns: 1fr; }
+  .wish-section-header { flex-direction: column; }
+  .wish-header-right { width: 100%; justify-content: space-between; }
+  .wish-open-btn { width: 100%; text-align: center; }
+}
