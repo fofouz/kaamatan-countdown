@@ -11,18 +11,19 @@ export default function FeedbackSection() {
   const [sent, setSent]       = useState(false);
   const [error, setError]     = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!message.trim() && !rating) {
       setError(true);
       setTimeout(() => setError(false), 2000);
       return;
     }
     // TODO: connect to Python FastAPI backend
-    // await fetch('https://your-backend.onrender.com/submit-feedback', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, message, rating }),
-    // });
+    await fetch('https://your-backend.onrender.com/submit-feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, message, rating }),
+    });
+    
     setSent(true);
   };
 

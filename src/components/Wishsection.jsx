@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './WishSection.css';
 
 const SAMPLE_WISHES = [
@@ -96,15 +96,22 @@ export default function WishSection() {
   const [newId, setNewId]   = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const handleSubmit = ({ name, wish }) => {
+  useEffect(() => {
+    fetch('https://your-backened.onrender.com/wishes')
+    .then(res => res.json())
+    .then(data => setWishes(data))
+    .catch(() => setWishes(SAMPLE_WISHES));
+  }, []);
+
+  const handleSubmit = async ({ name, wish }) => {
     const newWish = { id: Date.now(), name, wish };
 
     // TODO: connect to Python FastAPI backend
-    // await fetch('https://your-backend.onrender.com/submit-wish', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, wish }),
-    // });
+    await fetch('https://your-backend.onrender.com/submit-wish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, wish }),
+    });
 
     setWishes(prev => [newWish, ...prev]);
     setNewId(newWish.id);

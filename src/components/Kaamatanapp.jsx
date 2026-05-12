@@ -42,123 +42,123 @@ function CoconutTree({ position }) {
   );
 }
 
-/* ── Rice Stalks SVG — big artistic golden style ─── */
-function RiceStalks() {
-  // Each stalk: x position, stem height, lean angle, scale, delay, duration
-  const leftStalks = [
-    { x: -3,  y: 100, h: 35, lean: 3,  scale: 1.4, delay: 0,   dur: 4.0 },
-    { x: 3,   y: 100, h: 28, lean: 2,  scale: 1.2, delay: 0.8, dur: 5.0 },
-    { x: 8,   y: 100, h: 38, lean: 4,  scale: 1.5, delay: 0.3, dur: 3.8 },
-    { x: 13,  y: 100, h: 25, lean: 2,  scale: 1.1, delay: 1.2, dur: 4.5 },
-    { x: 18,  y: 100, h: 32, lean: 3,  scale: 1.3, delay: 0.6, dur: 4.2 },
-    { x: 22,  y: 100, h: 22, lean: 2,  scale: 1.0, delay: 1.8, dur: 3.6 },
-  ];
+// /* ── Rice Stalks SVG — big artistic golden style ─── */
+// function RiceStalks() {
+//   // Each stalk: x position, stem height, lean angle, scale, delay, duration
+//   const leftStalks = [
+//     { x: -3,  y: 100, h: 35, lean: 3,  scale: 1.4, delay: 0,   dur: 4.0 },
+//     { x: 3,   y: 100, h: 28, lean: 2,  scale: 1.2, delay: 0.8, dur: 5.0 },
+//     { x: 8,   y: 100, h: 38, lean: 4,  scale: 1.5, delay: 0.3, dur: 3.8 },
+//     { x: 13,  y: 100, h: 25, lean: 2,  scale: 1.1, delay: 1.2, dur: 4.5 },
+//     { x: 18,  y: 100, h: 32, lean: 3,  scale: 1.3, delay: 0.6, dur: 4.2 },
+//     { x: 22,  y: 100, h: 22, lean: 2,  scale: 1.0, delay: 1.8, dur: 3.6 },
+//   ];
 
-  const rightStalks = [
-    { x: 103, y: 100, h: 35, lean: -3, scale: 1.4, delay: 0.4, dur: 4.1 },
-    { x: 97,  y: 100, h: 28, lean: -2, scale: 1.2, delay: 1.0, dur: 5.2 },
-    { x: 92,  y: 100, h: 38, lean: -4, scale: 1.5, delay: 0.2, dur: 3.9 },
-    { x: 87,  y: 100, h: 25, lean: -2, scale: 1.1, delay: 1.5, dur: 4.4 },
-    { x: 82,  y: 100, h: 32, lean: -3, scale: 1.3, delay: 0.7, dur: 4.0 },
-    { x: 78,  y: 100, h: 22, lean: -2, scale: 1.0, delay: 2.0, dur: 3.7 },
-  ];
+//   const rightStalks = [
+//     { x: 103, y: 100, h: 35, lean: -3, scale: 1.4, delay: 0.4, dur: 4.1 },
+//     { x: 97,  y: 100, h: 28, lean: -2, scale: 1.2, delay: 1.0, dur: 5.2 },
+//     { x: 92,  y: 100, h: 38, lean: -4, scale: 1.5, delay: 0.2, dur: 3.9 },
+//     { x: 87,  y: 100, h: 25, lean: -2, scale: 1.1, delay: 1.5, dur: 4.4 },
+//     { x: 82,  y: 100, h: 32, lean: -3, scale: 1.3, delay: 0.7, dur: 4.0 },
+//     { x: 78,  y: 100, h: 22, lean: -2, scale: 1.0, delay: 2.0, dur: 3.7 },
+//   ];
 
-  // Draw one full rice stalk with stem + leaves + grain head
-  const drawStalk = (s, i) => {
-    const sc = s.scale;
-    const h  = s.h * sc;
-    const lx = Math.sin((s.lean * Math.PI) / 180) * h;
+//   // Draw one full rice stalk with stem + leaves + grain head
+//   const drawStalk = (s, i) => {
+//     const sc = s.scale;
+//     const h  = s.h * sc;
+//     const lx = Math.sin((s.lean * Math.PI) / 180) * h;
 
-    // Grain head — drooping cluster at the top
-    const grains = [
-      { ox: 0,         oy: 0,         rx: 2.2 * sc, ry: 5.5 * sc, rot: s.lean - 10 },
-      { ox: -3 * sc,   oy: 3 * sc,    rx: 2.0 * sc, ry: 5.0 * sc, rot: s.lean - 30 },
-      { ox: 3 * sc,    oy: 3 * sc,    rx: 2.0 * sc, ry: 5.0 * sc, rot: s.lean + 10 },
-      { ox: -5.5 * sc, oy: 7 * sc,    rx: 1.8 * sc, ry: 4.5 * sc, rot: s.lean - 45 },
-      { ox: 5.5 * sc,  oy: 7 * sc,    rx: 1.8 * sc, ry: 4.5 * sc, rot: s.lean + 25 },
-      { ox: -2 * sc,   oy: 10 * sc,   rx: 1.6 * sc, ry: 4.0 * sc, rot: s.lean - 55 },
-      { ox: 2 * sc,    oy: 10 * sc,   rx: 1.6 * sc, ry: 4.0 * sc, rot: s.lean + 35 },
-      { ox: -7 * sc,   oy: 12 * sc,   rx: 1.4 * sc, ry: 3.5 * sc, rot: s.lean - 60 },
-      { ox: 7 * sc,    oy: 12 * sc,   rx: 1.4 * sc, ry: 3.5 * sc, rot: s.lean + 40 },
-    ];
+//     // Grain head — drooping cluster at the top
+//     const grains = [
+//       { ox: 0,         oy: 0,         rx: 2.2 * sc, ry: 5.5 * sc, rot: s.lean - 10 },
+//       { ox: -3 * sc,   oy: 3 * sc,    rx: 2.0 * sc, ry: 5.0 * sc, rot: s.lean - 30 },
+//       { ox: 3 * sc,    oy: 3 * sc,    rx: 2.0 * sc, ry: 5.0 * sc, rot: s.lean + 10 },
+//       { ox: -5.5 * sc, oy: 7 * sc,    rx: 1.8 * sc, ry: 4.5 * sc, rot: s.lean - 45 },
+//       { ox: 5.5 * sc,  oy: 7 * sc,    rx: 1.8 * sc, ry: 4.5 * sc, rot: s.lean + 25 },
+//       { ox: -2 * sc,   oy: 10 * sc,   rx: 1.6 * sc, ry: 4.0 * sc, rot: s.lean - 55 },
+//       { ox: 2 * sc,    oy: 10 * sc,   rx: 1.6 * sc, ry: 4.0 * sc, rot: s.lean + 35 },
+//       { ox: -7 * sc,   oy: 12 * sc,   rx: 1.4 * sc, ry: 3.5 * sc, rot: s.lean - 60 },
+//       { ox: 7 * sc,    oy: 12 * sc,   rx: 1.4 * sc, ry: 3.5 * sc, rot: s.lean + 40 },
+//     ];
 
-    // Side leaves along the stem
-    const leaves = [
-      { pos: 0.35, side: 1,  len: 14 * sc, width: 2.5 * sc },
-      { pos: 0.55, side: -1, len: 12 * sc, width: 2.2 * sc },
-      { pos: 0.70, side: 1,  len: 10 * sc, width: 2.0 * sc },
-    ];
+//     // Side leaves along the stem
+//     const leaves = [
+//       { pos: 0.35, side: 1,  len: 14 * sc, width: 2.5 * sc },
+//       { pos: 0.55, side: -1, len: 12 * sc, width: 2.2 * sc },
+//       { pos: 0.70, side: 1,  len: 10 * sc, width: 2.0 * sc },
+//     ];
 
-    const tipX = s.x + lx;
-    const tipY = s.y - h;
+//     const tipX = s.x + lx;
+//     const tipY = s.y - h;
 
-    return (
-      <g
-        key={i}
-        style={{
-          animation: `sway ${s.dur}s ease-in-out ${s.delay}s infinite`,
-          transformOrigin: `${s.x}% 100%`,
-        }}
-      >
-        {/* Main stem */}
-        <line
-          x1={`${s.x}%`} y1={`${s.y}%`}
-          x2={`${tipX}%`} y2={`${tipY}%`}
-          stroke="#3a7010"
-          strokeWidth={1.8 * sc}
-          strokeLinecap="round"
-        />
+//     return (
+//       <g
+//         key={i}
+//         style={{
+//           animation: `sway ${s.dur}s ease-in-out ${s.delay}s infinite`,
+//           transformOrigin: `${s.x}% 100%`,
+//         }}
+//       >
+//         {/* Main stem */}
+//         <line
+//           x1={`${s.x}%`} y1={`${s.y}%`}
+//           x2={`${tipX}%`} y2={`${tipY}%`}
+//           stroke="#3a7010"
+//           strokeWidth={1.8 * sc}
+//           strokeLinecap="round"
+//         />
 
-        {/* Side leaves */}
-        {leaves.map((lf, li) => {
-          const lsx = s.x + lx * lf.pos;
-          const lsy = s.y - h * lf.pos;
-          const lAngle = s.lean + lf.side * 45;
-          const lex = lsx + Math.sin((lAngle * Math.PI) / 180) * lf.len;
-          const ley = lsy - Math.cos((lAngle * Math.PI) / 180) * lf.len;
-          return (
-            <line
-              key={li}
-              x1={`${lsx}%`} y1={`${lsy}%`}
-              x2={`${lex}%`} y2={`${ley}%`}
-              stroke="#4a8820"
-              strokeWidth={lf.width}
-              strokeLinecap="round"
-              opacity="0.9"
-            />
-          );
-        })}
+//         {/* Side leaves */}
+//         {leaves.map((lf, li) => {
+//           const lsx = s.x + lx * lf.pos;
+//           const lsy = s.y - h * lf.pos;
+//           const lAngle = s.lean + lf.side * 45;
+//           const lex = lsx + Math.sin((lAngle * Math.PI) / 180) * lf.len;
+//           const ley = lsy - Math.cos((lAngle * Math.PI) / 180) * lf.len;
+//           return (
+//             <line
+//               key={li}
+//               x1={`${lsx}%`} y1={`${lsy}%`}
+//               x2={`${lex}%`} y2={`${ley}%`}
+//               stroke="#4a8820"
+//               strokeWidth={lf.width}
+//               strokeLinecap="round"
+//               opacity="0.9"
+//             />
+//           );
+//         })}
 
-        {/* Grain cluster at tip */}
-        {grains.map((g, gi) => (
-          <ellipse
-            key={gi}
-            cx={`${tipX + g.ox}%`}
-            cy={`${tipY + g.oy}%`}
-            rx={`${g.rx}%`}
-            ry={`${g.ry}%`}
-            fill={gi % 2 === 0 ? '#f0c020' : '#d4980c'}
-            transform={`rotate(${g.rot}, ${tipX + g.ox}%, ${tipY + g.oy}%)`}
-            opacity="0.95"
-          />
-        ))}
-      </g>
-    );
-  };
+//         {/* Grain cluster at tip */}
+//         {grains.map((g, gi) => (
+//           <ellipse
+//             key={gi}
+//             cx={`${tipX + g.ox}%`}
+//             cy={`${tipY + g.oy}%`}
+//             rx={`${g.rx}%`}
+//             ry={`${g.ry}%`}
+//             fill={gi % 2 === 0 ? '#f0c020' : '#d4980c'}
+//             transform={`rotate(${g.rot}, ${tipX + g.ox}%, ${tipY + g.oy}%)`}
+//             opacity="0.95"
+//           />
+//         ))}
+//       </g>
+//     );
+//   };
 
-  return (
-    <svg
-      className="rice-field"
-      viewBox="0 0 100 100"
-      preserveAspectRatio="xMidYMax meet"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {leftStalks.map((s, i)  => drawStalk(s, i))}
-      {rightStalks.map((s, i) => drawStalk(s, i + 10))}
-    </svg>
-  );
-}
+//   return (
+//     <svg
+//       className="rice-field"
+//       viewBox="0 0 100 100"
+//       preserveAspectRatio="xMidYMax meet"
+//       xmlns="http://www.w3.org/2000/svg"
+//       aria-hidden="true"
+//     >
+//       {leftStalks.map((s, i)  => drawStalk(s, i))}
+//       {rightStalks.map((s, i) => drawStalk(s, i + 10))}
+//     </svg>
+//   );
+// }
 
 /* ── Main App ─────────────────────────────────────── */
 export default function KaamatanApp() {
@@ -179,7 +179,7 @@ export default function KaamatanApp() {
       <CoconutTree position="left-1" />
 
       {/* Rice stalks */}
-      <RiceStalks />
+      {/* <RiceStalks /> */}
 
       {/* Navigation */}
       <Navbar />

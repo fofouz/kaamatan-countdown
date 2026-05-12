@@ -1,0 +1,11 @@
+# Secret keys — never push to GitHub!
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+env/
