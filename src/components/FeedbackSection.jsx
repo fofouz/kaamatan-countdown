@@ -23,7 +23,7 @@ export default function FeedbackSection() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, message, rating }),
     });
-    
+
     setSent(true);
   };
 
@@ -33,13 +33,13 @@ export default function FeedbackSection() {
     <section className="feedback-section" id="feedback">
       <div className="section-inner">
         <h2 className="section-title">Feedback</h2>
-        <p className="section-sub">Bantu kami menambah baik laman ini</p>
+        <p className="section-sub">Help us improve this site</p>
 
         {sent ? (
           <div className="thanks-box">
             <div className="thanks-icon">🙏</div>
-            <p className="thanks-msg">Terima kasih atas maklum balas anda!</p>
-            <p className="thanks-gold">Ia amat bermakna bagi kami.</p>
+            <p className="thanks-msg">Thank you for your feedback!</p>
+            <p className="thanks-gold">It means a lot to us.</p>
           </div>
         ) : (
           <div className="feedback-form">
@@ -60,32 +60,32 @@ export default function FeedbackSection() {
                 ))}
               </div>
               <p className="rating-label">
-                {activeRating ? RATING_LABELS[activeRating] : 'Beri penilaian anda'}
+                {activeRating ? RATING_LABELS[activeRating] : 'Rate your experience'}
               </p>
             </div>
 
             <input
               className="form-input"
               type="text"
-              placeholder="Nama anda (tidak wajib)"
+              placeholder="Your Name (Optional)"
               value={name}
               onChange={e => setName(e.target.value)}
             />
 
             <textarea
               className={`form-textarea ${error ? 'error' : ''}`}
-              placeholder="Cadangan atau komen anda tentang laman ini..."
+              placeholder="Suggestions or comments about this site..."
               value={message}
               onChange={e => setMessage(e.target.value)}
               rows={4}
             />
 
             {error && (
-              <p className="form-error">Sila beri penilaian atau tulis komen dahulu.</p>
+              <p className="form-error">Please rate your experience or write a comment first.</p>
             )}
 
             <button className="submit-btn" onClick={handleSubmit}>
-              Hantar Maklum Balas
+              Submit Feedback
             </button>
           </div>
         )}

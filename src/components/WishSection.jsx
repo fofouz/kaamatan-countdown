@@ -53,36 +53,36 @@ function WishModal({ onClose, onSubmit }) {
         {sent ? (
           <div className="modal-thanks">
             <div className="modal-thanks-icon">🌾</div>
-            <p className="modal-thanks-msg">Terima kasih! Keinginan anda telah dihantar.</p>
+            <p className="modal-thanks-msg">Thank you! Your wish has been submitted.</p>
             <p className="modal-thanks-gold">Kopivosian Tadau Kaamatan! 🎉</p>
           </div>
         ) : (
           <>
             <h2 className="modal-title">Make a Wish 🌾</h2>
             <div className="wish-question">
-              Apa keinginan anda sepanjang bulan Kaamatan?
+              What are your wishes for the entire month of Kaamatan?
             </div>
 
             <input
               className="form-input"
               type="text"
-              placeholder="Nama anda (tidak wajib)"
+              placeholder="Name (Jangan letak full name 😂)"
               value={name}
               onChange={e => setName(e.target.value)}
             />
 
             <textarea
               className={`form-textarea ${error ? 'error' : ''}`}
-              placeholder="Kongsikan keinginan, harapan, atau ucapan anda untuk Kaamatan..."
+              placeholder="Share your wishes, hopes, or messages for Kaamatan... Think carefully! Once submitted, your sentences cannot be deleted after they are submitted. Write from the heart! 😊"
               value={wish}
               onChange={e => setWish(e.target.value)}
               rows={5}
             />
 
-            {error && <p className="form-error">Sila tulis keinginan anda dahulu.</p>}
+            {error && <p className="form-error">Please write your wish first.</p>}
 
             <button className="submit-btn" onClick={handleSubmit}>
-              Hantar Keinginan 🌾
+              Submit Wish 🌾
             </button>
           </>
         )}
@@ -124,13 +124,13 @@ export default function WishSection() {
       {/* Section header */}
       <div className="wish-section-header">
         <div>
-          <h2 className="section-title">Keinginan Semua 🌾</h2>
-          <p className="section-sub">Apa keinginan anda untuk Kaamatan tahun ini?</p>
+          <h2 className="section-title">Make a Wish🌾</h2>
+          <p className="section-sub">What do you wish for and celebrate during Kaamatan 2026?</p>
         </div>
         <div className="wish-header-right">
-          <span className="wish-wall-count">{wishes.length} keinginan</span>
+          <span className="wish-wall-count">{wishes.length} Wishes</span>
           <button className="wish-open-btn" onClick={() => setShowModal(true)}>
-            + Make a Wish
+            + Post
           </button>
         </div>
       </div>

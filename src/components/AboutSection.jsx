@@ -6,50 +6,32 @@ export default function AboutSection() {
       <div className="about-inner">
 
         {/* Badge */}
-        <div className="about-badge">🌾 Tentang Laman Web Ini</div>
+        <div className="about-badge">🌾 About This Website</div>
 
         {/* Main message */}
         <h2 className="about-title">
-          Dibina dengan <span className="about-heart">❤️</span> oleh anak Sabah
+          Built with <span className="about-heart">❤️</span> by Sabahan
         </h2>
 
         <p className="about-desc">
-          Laman web ini merupakan <strong>projek pertama</strong> saya selepas menamatkan 
-          pengajian dalam bidang <strong>Full-Stack AI Development</strong>. Ia dibina khas 
-          untuk meraikan <strong>Tadau Kaamatan 2026</strong> — perayaan menuai yang 
-          disambut meriah di negeri Sabah, Malaysia.
+          This website is the <strong>first simple website I ever built</strong> after completing 
+          my upskilling in <strong>Full-Stack AI Development</strong>. A little about me, I had 
+          asbolutely no coding background throughout my Diploma and Degree studies. When I discovered
+          this upskilling programme, I honestly thought it would be overwhelming. But surprisingly, 
+          it turned out to be one of the most enjoyable learning experiences I've had.
         </p>
 
         <p className="about-desc">
-          Matlamat utama laman web ini adalah untuk mengumpulkan keinginan dan harapan 
-          masyarakat sempena bulan Kaamatan, serta berkongsi semangat perayaan bersama 
-          komuniti — di mana sahaja anda berada.
+          As my first project, I decided to build something meaningful which is a simple webstie
+          dedicated to celebrating <strong>Tadau Kaamatan 2026</strong>, the harvest festival celebrated
+          with great joy across Sabah, Malaysia. The main goal is simple: to gather the wishes and 
+          hopes of the community during the Kaamatan season, and to share their enjoyful together with no
+          matter where you are. <strong>Semoga Kaamatan tahun ini lebih meriah. Kopivosian!</strong> 🌾
         </p>
 
-        {/* Divider */}
-        <div className="about-divider">
-          <span>🌾</span>
-          <div className="about-divider-line" />
-          <span>🌾</span>
-        </div>
-
-        {/* Stats */}
-        <div className="about-stats">
-          <div className="about-stat">
-            <span className="stat-num">01</span>
-            <span className="stat-label">Projek Pertama</span>
-          </div>
-          <div className="about-stat-divider" />
-          <div className="about-stat">
-            <span className="stat-num">2026</span>
-            <span className="stat-label">Tahun Dibina</span>
-          </div>
-          <div className="about-stat-divider" />
-          <div className="about-stat">
-            <span className="stat-num">100%</span>
-            <span className="stat-label">Dibina dengan Semangat</span>
-          </div>
-        </div>
+        <p className="about-credit">
+          Developed by <span className="about-credit-name">Fofouz</span>
+        </p>
 
         {/* Quote */}
         <blockquote className="about-quote">

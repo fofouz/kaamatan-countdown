@@ -141,3 +141,16 @@
   .about-stat-divider { display: none; }
   .about-stats   { gap: 8px; }
 }
+
+/* ── Credit ────────────────────────────────────── */
+.about-credit {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.about-credit-name {
+  color: #f0c040;
+  font-weight: 700;
+}
