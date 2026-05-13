@@ -35,9 +35,6 @@
 }
 
 @media (max-width: 520px) {
-  /* .hero { padding: 80px 16px 40px;}
-  .hero-title-big { font-size: clamp(36px, 10vw, 82px);}
-  .hero-date { margin-bottom: 16px;} */
   .kinabalu-photo {
     background-size: 180% 100%;
     background-position: center top;
