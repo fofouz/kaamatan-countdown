@@ -34,6 +34,16 @@
   z-index: 0;
 }
 
+@media (max-width: 520px) {
+  /* .hero { padding: 80px 16px 40px;}
+  .hero-title-big { font-size: clamp(36px, 10vw, 82px);}
+  .hero-date { margin-bottom: 16px;} */
+  .kinabalu-photo {
+    background-size: 180% 100%;
+    background-position: center top;
+  }
+}
+
 /* Warm golden overlay — keeps Kaamatan colour theme */
 .kinabalu-overlay {
   position: fixed;
@@ -246,8 +256,9 @@
 
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 520px) {
-  .hero { padding: 90px 16px 60px; }
-  .hero-date { margin-bottom: 24px; }
+  .hero { padding: 80px 16px 40px; }
+  .hero-title-big { font-size: clamp(36px, 10vw, 82px); }
+  .hero-date { margin-bottom: 16px; }
   .coconut-tree--right-1 { width: 50px; height: 150px; right: 2%; }
   .coconut-tree--right-2 { width: 38px; height: 115px; right: 9%; }
   .coconut-tree--left-1  { width: 40px; height: 120px; left: 1%; }

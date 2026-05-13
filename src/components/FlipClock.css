@@ -19,8 +19,8 @@
   background: #111111;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
-  width: clamp(80px, 17vw, 118px);
-  height: clamp(90px, 19vw, 132px);
+  width: clamp(60px, 15vw, 118px);
+  height: clamp(68px, 17vw, 132px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +69,7 @@
 /* Number text — bold white like reference image */
 .flip-num {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(36px, 9vw, 68px);
+  font-size: clamp(26px, 8vw, 68px);
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
