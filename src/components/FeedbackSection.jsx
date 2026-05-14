@@ -11,20 +11,29 @@ export default function FeedbackSection() {
   const [sent, setSent]       = useState(false);
   const [error, setError]     = useState(false);
 
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
     if (!message.trim() && !rating) {
       setError(true);
       setTimeout(() => setError(false), 2000);
       return;
     }
-    // TODO: connect to Python FastAPI backend
-    await fetch('https://kaamatan-backend.onrender.com/submit-feedback', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, message, rating }),
-    });
-
-    setSent(true);
+    try {
+      const res = await fetch('https://kaamatan-backend.onrender.com/submit-feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, message, rating }),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError(true);
+        setTimeout(() => setError(false), 2000);
+      }
+    } catch (err) {
+      console.error('Feedback error:', err);
+      setError(true);
+      setTimeout(() => setError(false), 2000);
+    }
   };
 
   const activeRating = hovered || rating;

@@ -16,7 +16,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",                        # local dev
-        "https://kaamatan-countdown.vercel.app",        # production — update this to your Vercel URL
+        "https://kaamatan-countdown.vercel.app",  
     ],
     allow_credentials=True,
     allow_methods=["*"],

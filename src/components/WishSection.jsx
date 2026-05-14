@@ -113,8 +113,11 @@ export default function WishSection() {
       body: JSON.stringify({ name, wish }),
     });
 
-    setWishes(prev => [newWish, ...prev]);
-    setNewId(newWish.id);
+    // Reload all wishes from database after submitting
+    const res = await fetch('https://kaamatan-backend.onrender.com/wishes');
+    const data = await res.json();
+    setWishes(data);
+    setNewId(data[0]?.id);
     setTimeout(() => setNewId(null), 1000);
   };
 
