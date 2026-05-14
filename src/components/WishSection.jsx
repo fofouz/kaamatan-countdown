@@ -104,9 +104,7 @@ export default function WishSection() {
   }, []);
 
   const handleSubmit = async ({ name, wish }) => {
-    const newWish = { id: Date.now(), name, wish };
 
-    // TODO: connect to Python FastAPI backend
     await fetch('https://kaamatan-backend.onrender.com/submit-wish', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
