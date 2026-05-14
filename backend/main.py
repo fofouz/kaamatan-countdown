@@ -44,6 +44,13 @@ class FeedbackInput(BaseModel):
 def root():
     return {"message": "Kaamatan Countdown API is running 🌾"}
 
+@app.get("/test")
+def test():
+    return {
+        "supabase_url": SUPABASE_URL[:20] if SUPABASE_URL else "MISSING",
+        "supabase_key": SUPABASE_KEY[:10] if SUPABASE_KEY else "MISSING",
+    }
+
 # ─────────────────────────────────────────────────────
 # WISHES
 # ─────────────────────────────────────────────────────
