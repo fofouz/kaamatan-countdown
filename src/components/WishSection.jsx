@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
 import './WishSection.css';
 
-const SAMPLE_WISHES = [
-  { id: 1, name: 'Siti', wish: 'Semoga tahun ini Kaamatan lebih meriah dan penuh dengan kesyukuran bersama keluarga tercinta!' },
-  { id: 2, name: 'Jeffry', wish: 'Kopivosian! Harap dapat balik kampung dan celebrate bersama ibu bapa.' },
-  { id: 3, name: 'Noreen', wish: 'Mahu makan hinava dan bambangan sepuasnya tahun ini. Selamat Kaamatan semua!' },
-  { id: 4, name: 'Ramlah', wish: 'Harap tahun ini dapat kumpul semua adik beradik. Lama sudah tidak jumpa!' },
-  { id: 5, name: 'Daniel', wish: 'Kopivosian kepada semua kaum Kadazan-Dusun di mana sahaja anda berada. 🌾' },
-];
+function SkeletonCard() {
+  return (
+    <div className="wish-card skeleton-card">
+      <div className="wish-card-header">
+        <div className="skel skel-avatar" />
+        <div className="skel skel-name" />
+      </div>
+      <div className="skel skel-line" />
+      <div className="skel  skel-line skel-line--short" />
+    </div>
+  
+  )
+}
 
 function WishCard({ item, isNew }) {
   return (
@@ -92,15 +98,22 @@ function WishModal({ onClose, onSubmit }) {
 }
 
 export default function WishSection() {
-  const [wishes, setWishes] = useState(SAMPLE_WISHES);
+  const [wishes, setWishes] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [newId, setNewId]   = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch('https://kaamatan-backend.onrender.com/wishes')
-    .then(res => res.json())
-    .then(data => setWishes(data))
-    .catch(() => setWishes(SAMPLE_WISHES));
+    fetch("https://kaamatan-backend.onrender.com/wishes")
+      .then(res => res.json())
+      .then(data => {
+        setWishes(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setWishes([]);
+        setLoading(false);
+      });
   }, []);
 
   const handleSubmit = async ({ name, wish }) => {
@@ -138,13 +151,24 @@ export default function WishSection() {
 
       {/* Wish wall — full width grid */}
       <div className="wish-grid">
-        {wishes.map(item => (
-          <WishCard
-            key={item.id}
-            item={item}
-            isNew={item.id === newId}
-          />
-        ))}
+        {loading ? (
+          Array.from({ length: 6 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))
+        ) : wishes.length === 0 ? (
+          <div className="wish-empty">
+            <p>🌾 Belum ada keinginan lagi.</p>
+            <p>Jadilah yang pertama!</p>
+          </div>
+        ) : (
+          wishes.map(item => (
+            <WishCard
+              key={item.id}
+              item={item}
+              isNew={item.id === newId}
+            />
+          ))
+        )}
       </div>
 
       {/* Modal popup */}
