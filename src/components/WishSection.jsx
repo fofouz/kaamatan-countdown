@@ -133,7 +133,7 @@ export default function WishSection() {
   };
 
   return (
-    <section className="wish-section" id="wish">
+    <section className={`wish-section ${showModal ? 'modal-active' : ''}`} id="wish">
 
       {/* Section header */}
       <div className="wish-section-header">

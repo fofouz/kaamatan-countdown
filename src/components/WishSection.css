@@ -147,15 +147,28 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8); /* Slightly darker for better focus */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 200;
+  z-index: 9999; /* Ensure this is the highest on your page */
   padding: 1rem;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   animation: fadeIn 0.2s ease;
+}
+
+/* NEW CLASS: This boosts the entire section's priority when modal is open */
+.wish-section.modal-active {
+  z-index: 10000; 
+}
+
+.wish-section {
+  position: relative;
+  z-index: 10;
+  padding: 80px 48px;
+  background: rgba(8, 3, 0, 0.88);
+  max-width: 100%;
 }
 
 @keyframes fadeIn {
