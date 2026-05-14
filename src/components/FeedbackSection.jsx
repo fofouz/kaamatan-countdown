@@ -18,7 +18,7 @@ export default function FeedbackSection() {
       return;
     }
     // TODO: connect to Python FastAPI backend
-    await fetch('https://your-backend.onrender.com/submit-feedback', {
+    await fetch('https://kaamatan-backend.onrender.com/submit-feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, message, rating }),
@@ -67,7 +67,7 @@ export default function FeedbackSection() {
             <input
               className="form-input"
               type="text"
-              placeholder="Your Name (Optional)"
+              placeholder="Enter Your Name"
               value={name}
               onChange={e => setName(e.target.value)}
             />

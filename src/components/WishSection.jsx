@@ -66,7 +66,7 @@ function WishModal({ onClose, onSubmit }) {
             <input
               className="form-input"
               type="text"
-              placeholder="Name (Jangan letak full name 😂)"
+              placeholder="Enter Your Name"
               value={name}
               onChange={e => setName(e.target.value)}
             />
@@ -97,7 +97,7 @@ export default function WishSection() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch('https://your-backened.onrender.com/wishes')
+    fetch('https://kaamatan-backend.onrender.com/wishes')
     .then(res => res.json())
     .then(data => setWishes(data))
     .catch(() => setWishes(SAMPLE_WISHES));
@@ -107,7 +107,7 @@ export default function WishSection() {
     const newWish = { id: Date.now(), name, wish };
 
     // TODO: connect to Python FastAPI backend
-    await fetch('https://your-backend.onrender.com/submit-wish', {
+    await fetch('https://kaamatan-backend.onrender.com/submit-wish', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, wish }),
