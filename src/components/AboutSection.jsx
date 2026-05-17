@@ -16,7 +16,7 @@ export default function AboutSection() {
         <p className="about-desc">
           This website is the <strong>first simple website I ever built</strong> after completing 
           my upskilling in <strong>Full-Stack AI Development</strong>. A little about me, I had 
-          asbolutely no coding background throughout my Diploma and Degree studies. When I discovered
+          absolutely no coding background throughout my Diploma and Degree studies. When I discovered
           this upskilling programme, I honestly thought it would be overwhelming. But surprisingly, 
           it turned out to be one of the most enjoyable learning experiences I've had.
         </p>
